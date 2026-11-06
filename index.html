@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buenos días, ¡mucha suerte!</title>
+<style>
+:root{
+  --bg1:#ffd6e8;--bg2:#ffe9f3;--bg3:#fff6c9;
+  --ink:#d6246e;--ink2:#7a2d52;--card:rgba(255,255,255,.75);--cheek:#ff9ec4;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg1:#3a1a33;--bg2:#4d2142;--bg3:#2b1a3d;--ink:#ff8cc3;--ink2:#ffd3e8;--card:rgba(255,255,255,.1);--cheek:#ff7fb5}
+}
+:root[data-theme="dark"]{--bg1:#3a1a33;--bg2:#4d2142;--bg3:#2b1a3d;--ink:#ff8cc3;--ink2:#ffd3e8;--card:rgba(255,255,255,.1);--cheek:#ff7fb5}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;font-family:"Quicksand","Trebuchet MS",system-ui,sans-serif;color:var(--ink2);
+  background:linear-gradient(160deg,var(--bg1),var(--bg2) 55%,var(--bg3));background-size:200% 200%;animation:bg 12s ease infinite;
+  overflow-x:hidden;text-align:center;position:relative}
+@keyframes bg{50%{background-position:100% 100%}}
+.sun{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);right:16px;font-size:54px;animation:spin 14s linear infinite;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cloud{position:fixed;font-size:60px;opacity:.85;animation:drift linear infinite;z-index:0}
+.c1{top:12%;animation-duration:38s}.c2{top:30%;animation-duration:52s;animation-delay:-20s;font-size:44px}
+@keyframes drift{from{left:-90px}to{left:105%}}
+.float{position:fixed;bottom:-40px;animation:rise linear forwards;pointer-events:none;z-index:0}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg);opacity:0}}
+main{position:relative;z-index:2;max-width:560px;margin:0 auto;padding:22px 16px 40px}
+h1{font-size:clamp(2rem,9vw,3.2rem);margin:6px 0 0;color:var(--ink);line-height:1.1;
+  text-shadow:2px 2px 0 rgba(255,255,255,.6);animation:pop 2.4s ease-in-out infinite}
+h1 span{display:inline-block;animation:wave 1.8s ease-in-out infinite}
+@keyframes wave{50%{transform:translateY(-8px) rotate(4deg)}}
+@keyframes pop{50%{transform:scale(1.04)}}
+.sub{font-size:1.25rem;margin:8px 0 0;font-weight:700}
+.kitty{width:min(300px,78vw);margin:10px auto 0;display:block;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(214,36,110,.25))}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-1.5deg)}}
+.eye{transform-origin:center;transform-box:fill-box;animation:blink 4s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.arm{transform-origin:208px 232px;animation:hi 1s ease-in-out infinite}
+@keyframes hi{50%{transform:rotate(-28deg)}}
+.bow{transform-origin:178px 62px;transform-box:view-box;animation:bow 2.2s ease-in-out infinite}
+@keyframes bow{50%{transform:rotate(6deg) scale(1.06)}}
+.cheek{animation:glow 2s ease-in-out infinite}
+@keyframes glow{50%{opacity:.45}}
+.msg{background:var(--card);backdrop-filter:blur(6px);border:3px dashed var(--cheek);border-radius:26px;padding:16px 18px;margin:16px 0;font-size:1.2rem;font-weight:700;min-height:92px;display:flex;align-items:center;justify-content:center}
+.msg b{color:var(--ink)}
+.exam{background:linear-gradient(135deg,#ff8cc3,#ffb36b);color:#fff;border-radius:28px;padding:18px;margin:14px 0;font-size:1.35rem;font-weight:800;box-shadow:0 10px 22px rgba(255,100,160,.35);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.03)}}
+.row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font-size:2rem;margin:10px 0}
+.row span{animation:hop 1.4s ease-in-out infinite}
+.row span:nth-child(2){animation-delay:.15s}.row span:nth-child(3){animation-delay:.3s}.row span:nth-child(4){animation-delay:.45s}.row span:nth-child(5){animation-delay:.6s}.row span:nth-child(6){animation-delay:.75s}
+@keyframes hop{50%{transform:translateY(-14px) scale(1.15)}}
+button{font:inherit;font-weight:800;font-size:1.1rem;border:0;border-radius:999px;padding:14px 26px;color:#fff;background:linear-gradient(135deg,#ff5fa2,#ff8cc3);box-shadow:0 6px 0 #d6246e,0 10px 18px rgba(214,36,110,.3);cursor:pointer;transition:transform .1s}
+button:active{transform:translateY(4px);box-shadow:0 2px 0 #d6246e}
+.foot{margin-top:18px;font-weight:700;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="sun">☀️</div>
+<div class="cloud c1">☁️</div>
+<div class="cloud c2">☁️</div>
+
+<main>
+  <h1 id="title"></h1>
+  <p class="sub">¡Que tengas un hermoso día! 🌸</p>
+
+  <svg class="kitty" viewBox="0 0 300 300" aria-label="Gatita kitty saludando">
+    <!-- cuerpo -->
+    <path d="M110 210 q-8 70 40 72 q48 -2 40 -72z" fill="#ff8cc3" stroke="#3b2a35" stroke-width="4"/>
+    <circle cx="150" cy="248" r="9" fill="#fff" opacity=".8"/>
+    <!-- patas -->
+    <ellipse cx="128" cy="284" rx="16" ry="9" fill="#fff" stroke="#3b2a35" stroke-width="4"/>
+    <ellipse cx="172" cy="284" rx="16" ry="9" fill="#fff" stroke="#3b2a35" stroke-width="4"/>
+    <!-- brazo izquierdo -->
+    <ellipse cx="102" cy="238" rx="13" ry="22" fill="#fff" stroke="#3b2a35" stroke-width="4" transform="rotate(20 102 238)"/>
+    <!-- brazo saludando -->
+    <g class="arm"><ellipse cx="212" cy="212" rx="13" ry="24" fill="#fff" stroke="#3b2a35" stroke-width="4" transform="rotate(-20 212 212)"/></g>
+    <!-- orejas -->
+    <path d="M62 92 L58 30 L112 62z" fill="#fff" stroke="#3b2a35" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M238 92 L242 30 L188 62z" fill="#fff" stroke="#3b2a35" stroke-width="4" stroke-linejoin="round"/>
+    <!-- cabeza -->
+    <ellipse cx="150" cy="128" rx="100" ry="82" fill="#fff" stroke="#3b2a35" stroke-width="4"/>
+    <!-- ojos -->
+    <ellipse class="eye" cx="108" cy="130" rx="9" ry="12" fill="#3b2a35"/>
+    <ellipse class="eye" cx="192" cy="130" rx="9" ry="12" fill="#3b2a35"/>
+    <circle cx="111" cy="125" r="3" fill="#fff"/><circle cx="195" cy="125" r="3" fill="#fff"/>
+    <!-- mejillas -->
+    <ellipse class="cheek" cx="84" cy="156" rx="14" ry="9" fill="var(--cheek)" opacity=".8"/>
+    <ellipse class="cheek" cx="216" cy="156" rx="14" ry="9" fill="var(--cheek)" opacity=".8"/>
+    <!-- nariz y sonrisa -->
+    <ellipse cx="150" cy="148" rx="10" ry="7" fill="#ffd23f" stroke="#3b2a35" stroke-width="3"/>
+    <path d="M138 164 q12 12 24 0" fill="none" stroke="#3b2a35" stroke-width="3" stroke-linecap="round"/>
+    <!-- bigotes -->
+    <g stroke="#3b2a35" stroke-width="3.5" stroke-linecap="round">
+      <path d="M46 130 L78 138"/><path d="M42 150 L76 150"/><path d="M46 170 L78 162"/>
+      <path d="M254 130 L222 138"/><path d="M258 150 L224 150"/><path d="M254 170 L222 162"/>
+    </g>
+    <!-- moño -->
+    <g class="bow">
+      <path d="M178 62 L222 38 L222 86z" fill="#ff5fa2" stroke="#3b2a35" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M178 62 L134 38 L134 86z" fill="#ff5fa2" stroke="#3b2a35" stroke-width="4" stroke-linejoin="round" transform="translate(0 0) scale(1)" opacity="0"/>
+      <circle cx="178" cy="62" r="12" fill="#ff8cc3" stroke="#3b2a35" stroke-width="4"/>
+    </g>
+  </svg>
+
+  <div class="msg" id="msg"></div>
+
+  <div class="exam">📚✏️ ¡Mucha suerte en tu examen! ✏️📚<br><small style="font-weight:600">Tú sabes más de lo que crees 💖</small></div>
+
+  <div class="row"><span>🌷</span><span>🍀</span><span>⭐</span><span>🎀</span><span>🍓</span><span>🦋</span></div>
+
+  <button id="btn">¡Toca para recibir suerte! 🍀</button>
+  <p class="foot" id="foot">✨ Hoy va a salir increíble ✨</p>
+</main>
+
+<script>
+(function(){
+  // Título con letras que ondulan
+  var t=document.getElementById('title');
+  "¡Buenos días!".split('').forEach(function(c,i){
+    var s=document.createElement('span');s.textContent=c===' '?'\u00A0':c;s.style.animationDelay=(i*0.09)+'s';t.appendChild(s);
+  });
+
+  // Mensajes que cambian
+  var msgs=[
+    "Hoy es un día perfecto para brillar ☀️",
+    "Respira hondo, <b>tú puedes</b> con todo 💪",
+    "Confía en todo lo que estudiaste 📖",
+    "Cada paso te acerca a tu meta 🌟",
+    "Estoy segura de que te va a ir <b>genial</b> 🎀",
+    "Sonríe, eres capaz de cosas increíbles 🌈",
+    "Que la suerte te acompañe hoy 🍀"
+  ];
+  var m=document.getElementById('msg'),i=0;
+  function show(){
+    m.style.opacity=0;m.style.transition='opacity .4s';
+    setTimeout(function(){m.innerHTML=msgs[i%msgs.length];m.style.opacity=1;i++;},400);
+  }
+  show();setInterval(show,3600);
+
+  // Cosas flotantes
+  var icons=['💖','🌸','⭐','🎀','🍓','✨','🌷','🍀','💕','🦋'];
+  function spawn(n){
+    var e=document.createElement('div');e.className='float';
+    e.textContent=icons[Math.floor(Math.random()*icons.length)];
+    e.style.left=Math.random()*100+'vw';
+    e.style.fontSize=(18+Math.random()*28)+'px';
+    var d=6+Math.random()*7;e.style.animationDuration=d+'s';
+    document.body.appendChild(e);setTimeout(function(){e.remove();},d*1000);
+  }
+  setInterval(spawn,450);
+
+  // Botón sorpresa
+  var foot=document.getElementById('foot');
+  var fm=["¡Suerte recibida! 🍀✨","¡Eres la mejor! 💖","¡Vas a sacar una nota excelente! 🌟","¡Tienes un abrazo virtual! 🤗","¡Éxito total hoy! 🎉"];
+  var k=0;
+  document.getElementById('btn').addEventListener('click',function(){
+    for(var j=0;j<30;j++){spawn();}
+    foot.textContent=fm[k++%fm.length];
+  });
+})();
+</script>
+</body>
+</html>
